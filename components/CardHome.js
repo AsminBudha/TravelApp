@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
-import { white } from 'ansi-colors';
+import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, Image } from 'react-native';
 
 /**
  * Display card item in home.
@@ -20,48 +19,62 @@ class CardHome extends React.Component {
     const data = this.props.data;
 
     return (
-      <View style={styles.card}>
-        <Image
-          source={data.img}
-          style={styles.img}
-          resizeMode='cover'
-        />
+      <ImageBackground source={data.img} style={styles.card}>
+        <TouchableOpacity
+          style={styles.fav}
+        >
+          <Image
+            resizeMode='cover'
+            style={styles.fav}
+            source={require('../assets/img/icons/fav.png')}
+          />
+        </TouchableOpacity>
         <View style={styles.txt}>
           <Text style={styles.num}>{data.numToDo}</Text>
-          <Text style={styles.title}>Things to do in{'\n'} {data.title}</Text>
+          <View>
+            <Text style={styles.staticText}>Things to do in</Text>
+            <Text style={styles.title}>{data.title}</Text>
+          </View>
+
         </View>
-      </View>
+      </ImageBackground>
     );
   }
 }
 
 const styles = StyleSheet.create({
   card: {
-    paddingBottom: 5,
-    height: 200,
     flex: 1,
-    alignItems: 'flex-start',
+    height: 200,
+    marginBottom: 2,
     position: 'relative',
+    justifyContent: 'flex-end',
   },
-  img: {
-    flex: 1
+  fav: {
+    height: 25,
+    width: 25,
+    position: 'absolute',
+    right: 5,
+    top: 5,
   },
   txt: {
-    position: 'absolute',
-    bottom: 10,
     paddingLeft: 10,
     color: '#FFFF',
-    flexDirection: 'row',
     backgroundColor: '#552A1A',
-    alignSelf: 'stretch',
+    opacity: 0.6,
+    flexDirection: 'row',
   },
   num: {
     fontSize: 32,
     color: '#FFFF',
     paddingRight: 10
   },
+  staticText: {
+    color: '#FFFF',
+  },
   title: {
     color: '#FFFF',
+    fontSize: 20,
   }
 });
 
