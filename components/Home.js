@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
 import CardHome from './CardHome';
 
 /**
@@ -9,6 +9,16 @@ import CardHome from './CardHome';
  * @extends {React.Component}
  */
 class Home extends React.Component {
+
+  /**
+   * Default object to handle navigation properties or appbar in app.
+   *
+   * @static
+   * @memberof Home
+   */
+  static navigationOptions = {
+    title: 'Discover',
+  };
 
   /**
    * return the key from item.

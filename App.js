@@ -8,7 +8,9 @@
  */
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
+
 import Home from './components/Home';
 
 const instructions = Platform.select({
@@ -18,16 +20,18 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-type Props = {};
-export default class App extends Component<Props> {
-  render() {
-    return (
-      <View>
-        <Home />
-      </View>
-    );
+/**
+ * Add screen or activity to navigation with their corresponding key or name.
+ */
+const AppNavigator = createStackNavigator({
+  Home: {
+    screen: Home
   }
-}
+});
+
+type Props = {};
+
+export default createAppContainer(AppNavigator);
 
 const styles = StyleSheet.create({
   container: {

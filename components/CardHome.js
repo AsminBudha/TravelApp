@@ -10,6 +10,30 @@ import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, Image } from
 class CardHome extends React.Component {
 
   /**
+   * Creates an instance of CardHome.
+   * @param {*} props
+   * @memberof CardHome
+   */
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isFav: false,
+    };
+  }
+
+  /**
+   * Handles press on favourite icon to change its active state.
+   *
+   * @memberof CardHome
+   */
+  onPressHandleFav = () => {
+    this.setState({
+      isFav: !this.state.isFav,
+    })
+  }
+
+  /**
    * Renders JSX component.
    *
    * @returns
@@ -17,16 +41,18 @@ class CardHome extends React.Component {
    */
   render() {
     const data = this.props.data;
+    const { isFav } = this.state;
 
     return (
       <ImageBackground source={data.img} style={styles.card}>
         <TouchableOpacity
           style={styles.fav}
+          onPress={this.onPressHandleFav}
         >
           <Image
             resizeMode='cover'
             style={styles.fav}
-            source={require('../assets/img/icons/fav.png')}
+            source={isFav ? require('../assets/img/icons/fav-active.png') : require('../assets/img/icons/fav.png')}
           />
         </TouchableOpacity>
         <View style={styles.txt}>
@@ -60,8 +86,7 @@ const styles = StyleSheet.create({
   txt: {
     paddingLeft: 10,
     color: '#FFFF',
-    backgroundColor: '#552A1A',
-    opacity: 0.6,
+    backgroundColor: 'rgba(85,42,26,0.4)',
     flexDirection: 'row',
   },
   num: {
