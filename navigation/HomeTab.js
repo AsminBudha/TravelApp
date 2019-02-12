@@ -5,13 +5,14 @@ import Icon from 'react-native-vector-icons/Entypo';
 import IconMaterial from 'react-native-vector-icons/MaterialIcons';
 import IconMaterialCommunity from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import Profile from './Profile';
-import HomeStack from './HomeStack';
-import * as appConstants from '../../constants/common';
+import Profile from '../screens/Profile';
+import HomeStack from './HomeStackForSingleLocation';
+import * as appConstants from '../constants/common';
+import Home from '../screens/Home';
 
 let HomeTabNavigator = {};
 HomeTabNavigator[appConstants.ROUTE_HOME] = {
-  screen: HomeStack,
+  screen: Home,
   navigationOptions: {
     tabBarLabel: 'Home',
     tabBarIcon: ({ tintColor, focused }) => (
@@ -20,20 +21,20 @@ HomeTabNavigator[appConstants.ROUTE_HOME] = {
   }
 };
 HomeTabNavigator['Favourite'] = {
-  screen: HomeStack,
+  screen: Home,
   navigationOptions: {
     tabBarLabel: 'Favorite',
     tabBarIcon: ({ tintColor, focused }) => (
-      <Icon name={focused ? 'heart' : 'heart-outlined'} color={tintColor} size={30} />
+      <Icon name={focused ? 'heart' : 'heart-outlined'} color={tintColor} size={24} />
     )
   }
 };
 HomeTabNavigator['Starred'] = {
-  screen: HomeStack,
+  screen: Home,
   navigationOptions: {
     tabBarLabel: 'Star',
     tabBarIcon: ({ tintColor, focused }) => (
-      <Icon name={focused ? 'star' : 'star-outlined'} color={tintColor} size={30} />
+      <Icon name={focused ? 'star' : 'star-outlined'} color={tintColor} size={24} />
     )
   }
 };
@@ -42,7 +43,7 @@ HomeTabNavigator['Profile'] = {
   navigationOptions: {
     tabBarLabel: 'Profiles',
     tabBarIcon: ({ tintColor, focused }) => (
-      <IconMaterial name={focused ? 'person' : 'person-outline'} color={tintColor} size={30} />
+      <IconMaterial name={focused ? 'person' : 'person-outline'} color={tintColor} size={24} />
     )
   }
 };

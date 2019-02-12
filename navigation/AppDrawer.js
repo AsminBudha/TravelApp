@@ -1,14 +1,15 @@
 import { createDrawerNavigator } from 'react-navigation';
 
-import Drawer1 from '../components/Drawer1';
-import Drawer2 from '../components/Drawer2';
-import Drawer3 from '../components/Drawer3';
+import Drawer1 from '../screens/Drawer1';
+import Drawer2 from '../screens/Drawer2';
+import Drawer3 from '../screens/Drawer3';
 import * as appConstants from '../constants/common';
-import HomeTab from '../components/Home/HomeTab';
+import HomeTab from '../navigation/HomeTab';
+import HomeStack from './HomeStack';
 
 let drawerNavigator = {};
 drawerNavigator[appConstants.ROUTE_HOME] = {
-  screen: HomeTab,
+  screen: HomeStack,
   navigationOptions: {
     title: appConstants.ROUTE_HOME
   }

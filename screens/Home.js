@@ -3,8 +3,8 @@ import { View, FlatList } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Entypo';
 
-import CardHome from './CardHome';
-import * as appConstants from '../../constants/common';
+import CardHome from '../components/Home/CardHome';
+import * as appConstants from '../constants/common';
 
 /**
  * Display view for home tab discover.
@@ -13,14 +13,15 @@ import * as appConstants from '../../constants/common';
  * @extends {React.Component}
  */
 class Home extends React.Component {
-  static navigationOptions = ({ navigation }) => ({
-    title: 'Hellooo',
-    headerLeft: <Icon.Button
-      size={24}
-      name='menu'
-      color='red'
-      onPress={() => navigation.openDrawer()} />
-  });
+  // static navigationOptions = ({ navigation }) => ({
+  //   title: 'Hellooo',
+  //   headerLeft: <Icon.Button
+  //     size={24}
+  //     name='menu'
+  //     color='red'
+  //     onPress={() => navigation.openDrawer()} />
+  // });
+
   /**
    * return the key from item.
    *
@@ -35,7 +36,7 @@ class Home extends React.Component {
    * @memberof CardHome
    */
   handleOnPressView = () => {
-    this.props.navigation.navigate(appConstants.ROUTE_ITEM_PROFILE)
+    this.props.navigation.navigate(appConstants.ROUTE_HOME_STACK_FOR_SINGLE_LOCATION)
   }
 
   /**
@@ -64,7 +65,7 @@ class Home extends React.Component {
       data.push(
         {
           title: 'Title ' + i,
-          img: require('../../assets/img/ktm.jpg'),
+          img: require('../assets/img/ktm.jpg'),
           numberOfThingsToDo: i,
         }
       );

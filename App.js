@@ -11,7 +11,6 @@ import React from 'react';
 import { StyleSheet, SafeAreaView } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 
-import HomeTab from './components/Home/HomeTab';
 import AppDrawer from './navigation/AppDrawer';
 
 const AppContainer = createAppContainer(AppDrawer);
