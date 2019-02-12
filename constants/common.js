@@ -6,6 +6,8 @@ export const ROUTE_DRAWER_3 = 'Drawer3';
 export const ROUTE_HOME_SINGLE_LOCATION_PROFILE = 'Single Location Profile';
 export const ROUTE_HOME_STACK_FOR_SINGLE_LOCATION = 'HomeStackForSingleLocation';
 export const ROUTE_HOME_SINGLE_LOCATION_ITEM_PROFILE = 'Single Location Item Profile';
+export const ROUTE_HOME_SINGLE_LOCATION_ITEM_PROFILE_INFO = 'Single Location Item Profile Info';
+export const ROUTE_HOME_SINGLE_LOCATION_ITEM_THINGS_TO_DO_PROFILE = 'single location things to do item profile';
 
 export const ROUTE_HOME_ITEM_TAB_ALL = 'All';
 export const ROUTE_HOME_ITEM_TAB_OTHER_1 = 'Other 1';

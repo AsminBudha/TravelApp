@@ -1,7 +1,8 @@
 import React from 'react';
 import { ScrollView, FlatList } from 'react-native-gesture-handler';
-import { View, Text, StyleSheet, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
 
+import * as appConstants from '../constants/common';
 /**
  * Components which display two column grid view with dynamic height.
  *
@@ -9,6 +10,15 @@ import { View, Text, StyleSheet, ImageBackground } from 'react-native';
  * @extends {React.Component}
  */
 class DynamicHeightGridView extends React.Component {
+
+  /**
+   *
+   *
+   * @memberof DynamicHeightGridView
+   */
+  handleOnPressItem = () => {
+    this.props.navigation.navigate(appConstants.ROUTE_HOME_SINGLE_LOCATION_ITEM_PROFILE);
+  }
 
   /**
    * return the key from item.
@@ -23,12 +33,16 @@ class DynamicHeightGridView extends React.Component {
    * @memberof Home
    */
   _renderItem = ({ item }) => (
-    <ImageBackground
-      source={require('../assets/img/swayambhu-stupa.jpg')}
-      style={styles.card}
+    <TouchableOpacity
+      onPress={this.handleOnPressItem}
     >
-      <Text>{item.title}</Text>
-    </ImageBackground>
+      <ImageBackground
+        source={require('../assets/img/swayambhu-stupa.jpg')}
+        style={styles.card}
+      >
+        <Text>{item.title}</Text>
+      </ImageBackground>
+    </TouchableOpacity>
   );
 
   /**

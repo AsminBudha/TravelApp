@@ -26,16 +26,16 @@ class ThingsToDoItemInfo extends React.Component {
           <Text>Lazimpat {'\n'}Kathmandu, Nepal</Text>
         </View>
         <View>
-          <MaterialCommunityIcons name='map-marker-outline' />
-          <Text>Lazimpat {'\n'}Kathmandu, Nepal</Text>
+          <MaterialCommunityIcons name='phone' />
+          <Text>Call 01-4410200</Text>
         </View>
         <View>
-          <MaterialCommunityIcons name='map-marker-outline' />
-          <Text>Lazimpat {'\n'}Kathmandu, Nepal</Text>
+          <MaterialCommunityIcons name='clock-outline' />
+          <Text>Opens at 10am</Text>
         </View>
         <View>
-          <MaterialCommunityIcons name='map-marker-outline' />
-          <Text>Lazimpat {'\n'}Kathmandu, Nepal</Text>
+          <MaterialCommunityIcons name='web' />
+          <Text>trisararestaurant.com</Text>
         </View>
         <Text>
           Trisara, the third garden of heaven, is a picturesque outdoor restaurant
