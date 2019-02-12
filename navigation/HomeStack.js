@@ -5,9 +5,11 @@ import * as appConstants from '../constants/common';
 import HomeStackForSingleLocation from './HomeStackForSingleLocation';
 
 const HomeStackNavigator = {};
+
 HomeStackNavigator[appConstants.ROUTE_HOME_TAB] = {
   screen: HomeTab,
 };
+
 HomeStackNavigator[appConstants.ROUTE_HOME_STACK_FOR_SINGLE_LOCATION] = {
   screen: HomeStackForSingleLocation,
 };

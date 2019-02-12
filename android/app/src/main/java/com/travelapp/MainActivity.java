@@ -1,8 +1,8 @@
 package com.travelapp;
 
 import com.facebook.react.ReactActivity;
-import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
+import com.facebook.react.ReactActivityDelegate;
 import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
 
 
@@ -16,6 +16,7 @@ public class MainActivity extends ReactActivity {
     protected String getMainComponentName() {
         return "TravelApp";
     }
+
     @Override
     protected ReactActivityDelegate createReactActivityDelegate() {
         return new ReactActivityDelegate(this, getMainComponentName()) {

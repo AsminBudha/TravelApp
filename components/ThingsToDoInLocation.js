@@ -1,6 +1,7 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native';
 import { createAppContainer } from 'react-navigation';
+
 import tabForThingsToDoInLocation from '../navigation/tabForThingsToDoInLocation';
 
 /**
@@ -26,6 +27,7 @@ class ThingsToDoInLocation extends React.Component {
   }
 }
 
+//Container for tab in things to do in location i.e list view and map view in design.
 const TabContainer = createAppContainer(tabForThingsToDoInLocation);
 
 export default ThingsToDoInLocation;

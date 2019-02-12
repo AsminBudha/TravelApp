@@ -1,9 +1,7 @@
 import React from 'react';
-import { createAppContainer } from 'react-navigation';
 import { ScrollView } from 'react-native-gesture-handler';
 import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
 
-import ItemTab from '../navigation/ItemTab';
 import * as appConstants from '../constants/common';
 import ThingsToDoInLocation from '../components/ThingsToDoInLocation';
 
@@ -16,6 +14,12 @@ import ThingsToDoInLocation from '../components/ThingsToDoInLocation';
  */
 class ThingsToDo extends React.Component {
 
+  /**
+   * Creates an instance of ThingsToDo.
+   *
+   * @param {*} props
+   * @memberof ThingsToDo
+   */
   constructor(props) {
     super(props);
 
@@ -23,7 +27,6 @@ class ThingsToDo extends React.Component {
       indexOfCurrentActiveChip: appConstants.LOCATION_CHIP_ALL_INDEX
     };
 
-    this.AppContainer = createAppContainer(ItemTab);
   }
 
   /**
@@ -56,7 +59,6 @@ class ThingsToDo extends React.Component {
    */
   render() {
     const { indexOfCurrentActiveChip } = this.state;
-
     const chips = appConstants.LOCATION_CHIPS.map((item, index) => {
       let touchableOpacityStyle = [styles.chipItem];
       let textStyle = [styles.chipItemText];

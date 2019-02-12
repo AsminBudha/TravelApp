@@ -8,17 +8,30 @@
  */
 
 import React from 'react';
-import { StyleSheet, SafeAreaView } from 'react-native';
 import { createAppContainer } from 'react-navigation';
+import { StyleSheet, SafeAreaView } from 'react-native';
 
 import AppDrawer from './navigation/AppDrawer';
 
+//container for navigation drawer
 const AppContainer = createAppContainer(AppDrawer);
 
+/**
+ * Main component of an app.
+ *
+ * @class App
+ * @extends {React.Component}
+ */
 class App extends React.Component {
+  /**
+   * Renders JSX element.
+   *
+   * @returns
+   * @memberof App
+   */
   render() {
     return (
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={styles.container}>
         <AppContainer />
       </SafeAreaView>
     );
@@ -30,18 +43,5 @@ export default App;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
   },
 });

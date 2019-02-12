@@ -2,6 +2,12 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 
+/**
+ * Component for map view in things to do in that location.
+ *
+ * @class MapViewForThingsToDoInLocation
+ * @extends {React.Component}
+ */
 class MapViewForThingsToDoInLocation extends React.Component {
   /**
    * Creates an instance of MapViewForThingsToDoInLocation.

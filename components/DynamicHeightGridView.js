@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, ImageBackground } from 'react-native';
 import { ScrollView, FlatList } from 'react-native-gesture-handler';
+import { View, Text, StyleSheet, ImageBackground } from 'react-native';
 
 /**
  * Components which display two column grid view with dynamic height.
@@ -29,7 +29,6 @@ class DynamicHeightGridView extends React.Component {
     >
       <Text>{item.title}</Text>
     </ImageBackground>
-
   );
 
   /**

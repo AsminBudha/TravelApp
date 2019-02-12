@@ -47,6 +47,7 @@ class CardHome extends React.Component {
     const { isFavourite } = this.state;
     const favouriteIcon = isFavourite ? 'heart' : 'heart-o';
     const favouriteIconColor = isFavourite ? 'red' : 'white';
+
     return (
       <TouchableOpacity
         onPress={handleOnPressView}

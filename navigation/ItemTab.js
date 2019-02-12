@@ -1,11 +1,11 @@
-import { Text } from 'react-native';
 import React from 'react';
+import { Text } from 'react-native';
 import { createMaterialTopTabNavigator } from 'react-navigation';
 
-import MapViewForThingsToDoInLocation from '../components/Home/Item/MapViewForThingsToDoInLocation';
-import ListView from '../components/Home/Item/ListView';
 import * as appConstants from '../constants/common';
+import ListView from '../components/Home/Item/ListView';
 import DynamicHeightGridView from '../components/DynamicHeightGridView';
+import MapViewForThingsToDoInLocation from '../components/Home/Item/MapViewForThingsToDoInLocation';
 
 let tabNavigator = {};
 
@@ -38,8 +38,5 @@ export default createMaterialTopTabNavigator(tabNavigator, {
       borderWidth: 2,
       borderStyle: 'solid',
     },
-    style: {
-    }
-
   }
 });

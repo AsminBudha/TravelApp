@@ -5,12 +5,12 @@ import Icon from 'react-native-vector-icons/Entypo';
 import IconMaterial from 'react-native-vector-icons/MaterialIcons';
 import IconMaterialCommunity from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import Profile from '../screens/Profile';
-import HomeStack from './HomeStackForSingleLocation';
-import * as appConstants from '../constants/common';
 import Home from '../screens/Home';
+import Profile from '../screens/Profile';
+import * as appConstants from '../constants/common';
 
 let HomeTabNavigator = {};
+
 HomeTabNavigator[appConstants.ROUTE_HOME] = {
   screen: Home,
   navigationOptions: {

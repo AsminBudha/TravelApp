@@ -13,14 +13,6 @@ import * as appConstants from '../constants/common';
  * @extends {React.Component}
  */
 class Home extends React.Component {
-  // static navigationOptions = ({ navigation }) => ({
-  //   title: 'Hellooo',
-  //   headerLeft: <Icon.Button
-  //     size={24}
-  //     name='menu'
-  //     color='red'
-  //     onPress={() => navigation.openDrawer()} />
-  // });
 
   /**
    * return the key from item.
@@ -48,6 +40,11 @@ class Home extends React.Component {
     <CardHome data={item} handleOnPressView={this.handleOnPressView} />
   );
 
+  /**
+   * Function is called after component is rendered.
+   *
+   * @memberof Home
+   */
   componentDidMount() {
     this.props.navigation.setParams({
       props: this.props
