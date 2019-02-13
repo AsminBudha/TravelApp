@@ -91,7 +91,7 @@ class ThingsToDo extends React.Component {
           </ScrollView>
 
         </View>
-        <ThingsToDoInLocation />
+        <ThingsToDoInLocation navigation={this.props.navigation} />
       </SafeAreaView>
     );
   }

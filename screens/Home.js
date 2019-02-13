@@ -21,15 +21,6 @@ class Home extends React.Component {
    */
   _keyExtractor = (item) => item.title;
 
-  /**
-   * Handle press on current component view.
-   * Opens profile of this item when press.
-   *
-   * @memberof CardHome
-   */
-  handleOnPressView = () => {
-    this.props.navigation.navigate(appConstants.ROUTE_HOME_STACK_FOR_SINGLE_LOCATION)
-  }
 
   /**
    * return component of an item.
@@ -37,7 +28,11 @@ class Home extends React.Component {
    * @memberof Home
    */
   _renderItem = ({ item }) => (
-    <CardHome data={item} handleOnPressView={this.handleOnPressView} />
+    <CardHome
+      data={item}
+      navigation={this.props.navigation}
+      handleOnPressView={this.handleOnPressView}
+    />
   );
 
   /**

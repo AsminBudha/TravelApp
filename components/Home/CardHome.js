@@ -2,6 +2,8 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, Image } from 'react-native';
 
+import * as appConstants from '../../constants/common';
+
 /**
  * Display card item in home.
  *
@@ -35,6 +37,16 @@ class CardHome extends React.Component {
   }
 
   /**
+   * Handle press on current component view.
+   * Opens profile of this item when press.
+   *
+   * @memberof CardHome
+   */
+  handleOnPressView = () => {
+    this.props.navigation.navigate(appConstants.ROUTE_HOME_STACK_FOR_SINGLE_LOCATION)
+  }
+
+  /**
    * Renders JSX component.
    *
    * @returns
@@ -43,14 +55,14 @@ class CardHome extends React.Component {
   render() {
     const { data: {
       img, numberOfThingsToDo, title
-    }, handleOnPressView } = this.props;
+    } } = this.props;
     const { isFavourite } = this.state;
     const favouriteIcon = isFavourite ? 'heart' : 'heart-o';
     const favouriteIconColor = isFavourite ? 'red' : 'white';
 
     return (
       <TouchableOpacity
-        onPress={handleOnPressView}
+        onPress={this.handleOnPressView}
       >
         <ImageBackground
           source={img}

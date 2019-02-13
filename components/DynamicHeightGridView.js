@@ -51,6 +51,8 @@ class DynamicHeightGridView extends React.Component {
    * @memberof DynamicHeightGridView
    */
   render() {
+    console.warn('dyanmic', this.props.rootNavigation);
+
     let data = [];
     for (let i = 1; i < 50; i++) {
       data.push(

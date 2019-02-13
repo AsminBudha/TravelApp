@@ -21,7 +21,7 @@ class ThingsToDoInLocation extends React.Component {
   render() {
     return (
       <SafeAreaView style={{ flex: 1 }}>
-        <TabContainer />
+        <tabForThingsToDoInLocation rootNavigation={this.props.navigation} />
       </SafeAreaView>
     );
   }
