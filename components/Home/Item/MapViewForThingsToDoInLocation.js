@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 
 /**
@@ -36,8 +36,8 @@ class MapViewForThingsToDoInLocation extends React.Component {
   componentDidMount() {
     navigator.geolocation.getCurrentPosition((position) => {
       let { latitude, longitude } = position.coords;
-      latitude = parseFloat(latitude) || 0;
-      longitude = parseFloat(longitude) || 0;
+      latitude = parseFloat(latitude) || 37.78825;
+      longitude = parseFloat(longitude) || -122.4324;
 
       this.setState({
         region: { ...this.state.region, latitude, longitude }
@@ -58,23 +58,32 @@ class MapViewForThingsToDoInLocation extends React.Component {
     const { region } = this.state;
 
     return (
-      <View style={{ flex: 1 }}>
+      <View style={styles.mapContainer}>
         <MapView
           initialRegion={region}
-          style={{ flex: 1 }}
+          style={styles.map}
         >
-          <Marker
+          {/* <Marker
             coordinate={{
               latitude: region.latitude,
               longitude: region.longitude
             }}
             title='Your Location'
-          />
+          /> */}
         </MapView>
       </View>
     );
   }
 
 }
+
+const styles = StyleSheet.create({
+  mapContainer: {
+    flex: 1,
+  },
+  map: {
+    flex: 1,
+  }
+});
 
 export default MapViewForThingsToDoInLocation;

@@ -1,6 +1,9 @@
 import React from 'react';
-import { createAppContainer } from 'react-navigation';
-import thingsToDoItemTab from '../navigation/thingsToDoItemTab';
+import { View } from 'react-native';
+import TabLayout from '../components/TabLayout';
+
+import ThingsToDoItemInfo from '../components/ThingsToDoItemInfo';
+import DynamicHeightGridView from '../components/DynamicHeightGridView';
 
 /**
  * Screen for profile of things todo item.
@@ -17,11 +20,24 @@ class ThingsToDoItemProfile extends React.Component {
    */
   render() {
     return (
-      <TabNavigation />
+      <View>
+        <TabLayout tabs={tabs} />
+      </View>
     );
   }
 }
 
-const TabNavigation = createAppContainer(thingsToDoItemTab);
+const tabs = [
+  {
+    title: 'Info',
+    screen: ThingsToDoItemInfo,
+  },
+  {
+    title: 'Pictures',
+    screen: DynamicHeightGridView,
+  }, {
+    title: 'Reviews',
+  }
+]
 
 export default ThingsToDoItemProfile;

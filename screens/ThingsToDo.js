@@ -4,6 +4,9 @@ import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-na
 
 import * as appConstants from '../constants/common';
 import ThingsToDoInLocation from '../components/ThingsToDoInLocation';
+import TabLayout from '../components/TabLayout';
+import DynamicHeightGridView from '../components/DynamicHeightGridView';
+import MapViewForThingsToDoInLocation from '../components/Home/Item/MapViewForThingsToDoInLocation';
 
 /**
  * Display Profile of an item.
@@ -89,13 +92,23 @@ class ThingsToDo extends React.Component {
           >
             {chips}
           </ScrollView>
-
         </View>
-        <ThingsToDoInLocation navigation={this.props.navigation} />
+        <TabLayout tabs={tabs} {...this.props} />
       </SafeAreaView>
     );
   }
 }
+
+const tabs = [
+  {
+    title: 'List View',
+    screen: DynamicHeightGridView// />,
+  },
+  {
+    title: 'Map View',
+    screen: MapViewForThingsToDoInLocation// />
+  }
+]
 
 const styles = StyleSheet.create({
   chipContainer: {

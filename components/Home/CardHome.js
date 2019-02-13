@@ -43,7 +43,7 @@ class CardHome extends React.Component {
    * @memberof CardHome
    */
   handleOnPressView = () => {
-    this.props.navigation.navigate(appConstants.ROUTE_HOME_STACK_FOR_SINGLE_LOCATION)
+    this.props.navigation.navigate(appConstants.ROUTE_HOME_SINGLE_LOCATION_PROFILE)
   }
 
   /**

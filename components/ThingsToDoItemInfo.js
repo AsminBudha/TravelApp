@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -21,21 +21,37 @@ class ThingsToDoItemInfo extends React.Component {
 
     return (
       <View>
-        <View>
-          <MaterialCommunityIcons name='map-marker-outline' />
-          <Text>Lazimpat {'\n'}Kathmandu, Nepal</Text>
+        <View style={styles.horizontalInfo}>
+          <MaterialCommunityIcons
+            size={24}
+            style={styles.infoIcon}
+            name='map-marker-outline'
+          />
+          <Text style={styles.infoText}>Lazimpat {'\n'}Kathmandu, Nepal</Text>
         </View>
-        <View>
-          <MaterialCommunityIcons name='phone' />
-          <Text>Call 01-4410200</Text>
+        <View style={styles.horizontalInfo}>
+          <MaterialCommunityIcons
+            size={24}
+            name='phone'
+            style={styles.infoIcon}
+          />
+          <Text style={styles.infoText}>Call 01-4410200</Text>
         </View>
-        <View>
-          <MaterialCommunityIcons name='clock-outline' />
-          <Text>Opens at 10am</Text>
+        <View style={styles.horizontalInfo}>
+          <MaterialCommunityIcons
+            size={24}
+            name='clock-outline'
+            style={styles.infoIcon}
+          />
+          <Text style={styles.infoText}>Opens at 10am</Text>
         </View>
-        <View>
-          <MaterialCommunityIcons name='web' />
-          <Text>trisararestaurant.com</Text>
+        <View style={styles.horizontalInfo}>
+          <MaterialCommunityIcons
+            size={24}
+            name='web'
+            style={styles.infoIcon}
+          />
+          <Text style={styles.infoText}>trisararestaurant.com</Text>
         </View>
         <Text>
           Trisara, the third garden of heaven, is a picturesque outdoor restaurant
@@ -49,5 +65,15 @@ class ThingsToDoItemInfo extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  horizontalInfo: {
+    flexDirection: 'row',
+  },
+  infoIcon: {
+  },
+  infoText: {
+  }
+});
 
 export default ThingsToDoItemInfo;
