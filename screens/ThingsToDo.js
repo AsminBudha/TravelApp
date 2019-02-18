@@ -31,6 +31,14 @@ class ThingsToDo extends React.Component {
     };
 
   }
+  /**
+   *
+   *
+   * @memberof DynamicHeightGridView
+   */
+  handleOnPressItem = () => {
+    this.props.navigation.navigate(appConstants.ROUTE_HOME_SINGLE_LOCATION_ITEM_PROFILE);
+  }
 
   /**
    * Change value of indexOfCurrentActiveChip in state to currently pressed index.
@@ -82,8 +90,19 @@ class ThingsToDo extends React.Component {
       );
     });
 
+    const tabs = [
+      {
+        title: 'List View',
+        screen: <DynamicHeightGridView handleOnPressItem={this.handleOnPressItem} />,
+      },
+      {
+        title: 'Map View',
+        screen: <MapViewForThingsToDoInLocation />
+      }
+    ];
+
     return (
-      <SafeAreaView style={{ flex: 1 }}>
+      <View>
         <View>
           <ScrollView
             horizontal={true}
@@ -94,21 +113,11 @@ class ThingsToDo extends React.Component {
           </ScrollView>
         </View>
         <TabLayout tabs={tabs} {...this.props} />
-      </SafeAreaView>
+      </View>
     );
   }
 }
 
-const tabs = [
-  {
-    title: 'List View',
-    screen: DynamicHeightGridView// />,
-  },
-  {
-    title: 'Map View',
-    screen: MapViewForThingsToDoInLocation// />
-  }
-]
 
 const styles = StyleSheet.create({
   chipContainer: {

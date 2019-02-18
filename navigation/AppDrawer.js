@@ -1,4 +1,6 @@
+import React from 'react';
 import { createDrawerNavigator } from 'react-navigation';
+import IconEntypo from 'react-native-vector-icons/Entypo';
 
 import HomeStack from './HomeStack';
 import Drawer1 from '../screens/Drawer1';
@@ -11,7 +13,7 @@ let drawerNavigator = {};
 drawerNavigator[appConstants.ROUTE_HOME] = {
   screen: HomeStack,
   navigationOptions: {
-    title: appConstants.ROUTE_HOME
+    title: appConstants.ROUTE_HOME,
   }
 };
 drawerNavigator[appConstants.ROUTE_DRAWER_1] = {

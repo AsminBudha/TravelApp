@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, FlatList } from 'react-native';
 
-import Icon from 'react-native-vector-icons/Entypo';
+import IconEntypo from 'react-native-vector-icons/Entypo';
 
+import * as http from '../constants/http';
 import CardHome from '../components/Home/CardHome';
 import * as appConstants from '../constants/common';
 
@@ -13,6 +14,14 @@ import * as appConstants from '../constants/common';
  * @extends {React.Component}
  */
 class Home extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: [],
+    };
+  }
 
   /**
    * return the key from item.
@@ -41,9 +50,13 @@ class Home extends React.Component {
    * @memberof Home
    */
   componentDidMount() {
-    this.props.navigation.setParams({
-      props: this.props
-    });
+    http
+      .getAllLocation()
+      .then((res) => {
+        console.warn(res);
+      }).catch((err) => {
+        console.warn(err);
+      });
   }
 
   /**

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, SafeAreaView } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 
 /**
@@ -59,9 +59,11 @@ class MapViewForThingsToDoInLocation extends React.Component {
 
     return (
       <View style={styles.mapContainer}>
+
+        <Text>Hello</Text>
         <MapView
-          initialRegion={region}
           style={styles.map}
+          initialRegion={region}
         >
           {/* <Marker
             coordinate={{

@@ -27,3 +27,5 @@ export const LOCATION_CHIP_OTHER_2_INDEX = 5;
 export const LOCATION_CHIP_NIGHT_VIEW_INDEX = 3;
 export const LOCATION_CHIP_FOOD_DRINKS_INDEX = 1;
 export const LOCATION_CHIP_SIGHT_SEEING_INDEX = 2;
+
+export const API_LOCATION_ALL = '/location';

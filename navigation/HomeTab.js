@@ -60,7 +60,7 @@ export default HomeTab = createMaterialTopTabNavigator(
         height: 0
       },
       style: {
-        backgroundColor: 'green'
+        backgroundColor: 'transparent'
       }
     }
   }

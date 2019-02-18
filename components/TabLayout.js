@@ -42,7 +42,6 @@ class TabLayout extends React.Component {
    */
   render() {
     const { tabs } = this.props;
-    console.warn('view', tabs[0].screen);
     const tabList = tabs && tabs.map((item, index) => {
       let tabStyle = [styles.tab];
       let tabTitleStyle = [];
@@ -68,7 +67,7 @@ class TabLayout extends React.Component {
         <View style={styles.tabBar}>
           {tabList}
         </View>
-        {CurrentViewOfTab && <CurrentViewOfTab {...this.props} />}
+        {CurrentViewOfTab}
       </View>
     );
   }

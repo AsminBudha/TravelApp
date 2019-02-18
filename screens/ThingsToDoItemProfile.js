@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import TabLayout from '../components/TabLayout';
 
 import ThingsToDoItemInfo from '../components/ThingsToDoItemInfo';
+import ThingsToDoItemReview from '../components/ThingsToDoItemReview';
 import DynamicHeightGridView from '../components/DynamicHeightGridView';
 
 /**
@@ -30,13 +31,14 @@ class ThingsToDoItemProfile extends React.Component {
 const tabs = [
   {
     title: 'Info',
-    screen: ThingsToDoItemInfo,
+    screen: <ThingsToDoItemInfo />,
   },
   {
     title: 'Pictures',
-    screen: DynamicHeightGridView,
+    screen: <DynamicHeightGridView />,
   }, {
     title: 'Reviews',
+    screen: <ThingsToDoItemReview />,
   }
 ]
 

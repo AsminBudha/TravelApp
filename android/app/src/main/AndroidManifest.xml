@@ -1,5 +1,14 @@
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">http://127.0.0.1:3000</domain>
+    </domain-config>
+</network-security-config>
+
+<?xml version="1.0" encoding="utf-8"?>
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.travelapp">
+    package="com.travelapp"
+    android:networkSecurityConfig="@xml/network_security_config">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>

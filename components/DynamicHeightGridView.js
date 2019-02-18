@@ -3,6 +3,7 @@ import { ScrollView, FlatList } from 'react-native-gesture-handler';
 import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
 
 import * as appConstants from '../constants/common';
+import ThingsToDoItemCard from './ThingsToDoItemCard';
 /**
  * Components which display two column grid view with dynamic height.
  *
@@ -10,15 +11,6 @@ import * as appConstants from '../constants/common';
  * @extends {React.Component}
  */
 class DynamicHeightGridView extends React.Component {
-
-  /**
-   *
-   *
-   * @memberof DynamicHeightGridView
-   */
-  handleOnPressItem = () => {
-    this.props.navigation.navigate(appConstants.ROUTE_HOME_SINGLE_LOCATION_ITEM_PROFILE);
-  }
 
   /**
    * return the key from item.
@@ -33,16 +25,11 @@ class DynamicHeightGridView extends React.Component {
    * @memberof Home
    */
   _renderItem = ({ item }) => (
-    <TouchableOpacity
-      onPress={this.handleOnPressItem}
-    >
-      <ImageBackground
-        source={require('../assets/img/swayambhu-stupa.jpg')}
-        style={styles.card}
-      >
-        <Text>{item.title}</Text>
-      </ImageBackground>
-    </TouchableOpacity>
+    <ThingsToDoItemCard
+      handleOnPressItem={this.props.handleOnPressItem}
+      image={require('../assets/img/swayambhu-stupa.jpg')}
+      title={item.title}
+    />
   );
 
   /**
@@ -83,17 +70,6 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
   },
-  card: {
-    backgroundColor: 'brown',
-    margin: 5,
-    borderRadius: 5,
-    height: 150,
-
-  },
-  cardText: {
-    color: 'white',
-    backgroundColor: 'brown',
-  }
 });
 
 export default DynamicHeightGridView;
