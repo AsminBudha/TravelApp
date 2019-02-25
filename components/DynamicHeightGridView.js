@@ -1,9 +1,11 @@
 import React from 'react';
 import { ScrollView, FlatList } from 'react-native-gesture-handler';
 import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
 
 import * as appConstants from '../constants/common';
 import ThingsToDoItemCard from './ThingsToDoItemCard';
+
 /**
  * Components which display two column grid view with dynamic height.
  *
@@ -27,8 +29,7 @@ class DynamicHeightGridView extends React.Component {
   _renderItem = ({ item }) => (
     <ThingsToDoItemCard
       handleOnPressItem={this.props.handleOnPressItem}
-      image={require('../assets/img/swayambhu-stupa.jpg')}
-      title={item.title}
+      data={item}
     />
   );
 
@@ -38,28 +39,31 @@ class DynamicHeightGridView extends React.Component {
    * @memberof DynamicHeightGridView
    */
   render() {
-    let data = [];
-    for (let i = 1; i < 50; i++) {
-      data.push(
-        {
-          title: 'Title ' + i,
-        }
-      );
+    const { data } = this.props;
+    let distributedData = [];
+    const totalColumn = 2;
+
+    for (let i = 0; i < totalColumn; i++) {
+      distributedData.push([]);
     }
+    for (let i = 0; i < data.length; i++) {
+      distributedData[i % totalColumn].push(data[i]);
+    }
+
+    const listView = distributedData
+      .map((item) => (
+        <FlatList
+          key={item}
+          data={item}
+          renderItem={this._renderItem}
+          keyExtractor={this._keyExtractor}
+        />
+      ));
 
     return (
       <View>
         <ScrollView contentContainerStyle={styles.container}>
-          <FlatList
-            data={data}
-            renderItem={this._renderItem}
-            keyExtractor={this._keyExtractor}
-          />
-          <FlatList
-            data={data}
-            renderItem={this._renderItem}
-            keyExtractor={this._keyExtractor}
-          />
+          {listView}
         </ScrollView>
       </View>
     );
@@ -69,7 +73,17 @@ class DynamicHeightGridView extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
+    justifyContent: 'flex-start',
+    paddingBottom: 100,
   },
 });
+
+DynamicHeightGridView.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    img: PropTypes.string,
+  })),
+}
 
 export default DynamicHeightGridView;

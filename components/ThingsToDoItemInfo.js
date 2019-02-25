@@ -18,6 +18,13 @@ class ThingsToDoItemInfo extends React.Component {
    * @memberof ThingsToDoItemInfo
    */
   render() {
+    const data = this.props.navigation.getParam('data', {});
+
+    if (data) {
+      var { id, title, img, tags, description, website, openingTime, phone, address } = data;
+    }
+    const addressText = address
+      .reduce((res, item, index) => res + item + (index < address.length - 1 && "\n"), "");
 
     return (
       <View>
@@ -27,7 +34,7 @@ class ThingsToDoItemInfo extends React.Component {
             style={styles.infoIcon}
             name='map-marker-outline'
           />
-          <Text style={styles.infoText}>Lazimpat {'\n'}Kathmandu, Nepal</Text>
+          <Text style={styles.infoText}>{addressText}</Text>
         </View>
         <View style={styles.horizontalInfo}>
           <MaterialCommunityIcons
@@ -35,7 +42,7 @@ class ThingsToDoItemInfo extends React.Component {
             name='phone'
             style={styles.infoIcon}
           />
-          <Text style={styles.infoText}>Call 01-4410200</Text>
+          <Text style={styles.infoText}>Call {phone}</Text>
         </View>
         <View style={styles.horizontalInfo}>
           <MaterialCommunityIcons
@@ -43,7 +50,7 @@ class ThingsToDoItemInfo extends React.Component {
             name='clock-outline'
             style={styles.infoIcon}
           />
-          <Text style={styles.infoText}>Opens at 10am</Text>
+          <Text style={styles.infoText}>Opens at {openingTime}</Text>
         </View>
         <View style={styles.horizontalInfo}>
           <MaterialCommunityIcons
@@ -51,15 +58,10 @@ class ThingsToDoItemInfo extends React.Component {
             name='web'
             style={styles.infoIcon}
           />
-          <Text style={styles.infoText}>trisararestaurant.com</Text>
+          <Text style={styles.infoText}>{website}</Text>
         </View>
         <Text>
-          Trisara, the third garden of heaven, is a picturesque outdoor restaurant
-          offering the most sumptuous food and drinks along with.
-        </Text>
-        <Text>
-          We serve great food with the perfect ambience. We have live music everyday
-          and we try to promote the local artist from various part of the world.
+          {description}
         </Text>
       </View>
     );

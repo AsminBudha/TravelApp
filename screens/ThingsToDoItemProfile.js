@@ -20,6 +20,20 @@ class ThingsToDoItemProfile extends React.Component {
    * @memberof ThingsToDoItemProfile
    */
   render() {
+    const tabs = [
+      {
+        title: 'Info',
+        screen: <ThingsToDoItemInfo  {...this.props} />,
+      },
+      {
+        title: 'Pictures',
+        screen: <DynamicHeightGridView  {...this.props} />,
+      }, {
+        title: 'Reviews',
+        screen: <ThingsToDoItemReview  {...this.props} />,
+      }
+    ];
+
     return (
       <View>
         <TabLayout tabs={tabs} />
@@ -27,19 +41,5 @@ class ThingsToDoItemProfile extends React.Component {
     );
   }
 }
-
-const tabs = [
-  {
-    title: 'Info',
-    screen: <ThingsToDoItemInfo />,
-  },
-  {
-    title: 'Pictures',
-    screen: <DynamicHeightGridView />,
-  }, {
-    title: 'Reviews',
-    screen: <ThingsToDoItemReview />,
-  }
-]
 
 export default ThingsToDoItemProfile;

@@ -10,12 +10,12 @@ import * as appConstants from '../constants/common';
 import * as actionTypes from '../redux/actionTypes';
 
 /**
- * Display view for home tab discover.
+ * Display view for Star tab discover.
  *
- * @class Home
+ * @class Star
  * @extends {React.Component}
  */
-class Home extends React.Component {
+class Star extends React.Component {
 
   constructor(props) {
     super(props);
@@ -28,14 +28,14 @@ class Home extends React.Component {
   /**
    * return the key from item.
    *
-   * @memberof Home
+   * @memberof Star
    */
   _keyExtractor = (item) => item.id.toString();
 
   /**
    * Handles press on favourite icon to change its active state.
    *
-   * @memberof CardHome
+   * @memberof CardStar
    */
   handleOnPressFav = (id) => {
     this.props.toggleFavoriteLocation(id);
@@ -45,7 +45,7 @@ class Home extends React.Component {
   /**
    * return component of an item.
    *
-   * @memberof Home
+   * @memberof Star
    */
   _renderItem = ({ item }) => (
     <CardHome
@@ -60,7 +60,7 @@ class Home extends React.Component {
   /**
    * Function is called after component is rendered.
    *
-   * @memberof Home
+   * @memberof Star
    */
   componentDidMount() {
     const allLocation = http.getAllLocation();
@@ -85,7 +85,7 @@ class Home extends React.Component {
   /**
    * Renders JSX component.
    *
-   * @memberof Home
+   * @memberof Star
    */
   render() {
     const { location } = this.props;
@@ -103,6 +103,8 @@ class Home extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  const { locationReducer: { location } } = state;
+
   return state.locationReducer;
 }
 
@@ -121,4 +123,4 @@ const toggleFavoriteLocation = (id) => ({
   payload: id
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Star);

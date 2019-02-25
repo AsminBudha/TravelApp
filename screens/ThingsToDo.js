@@ -1,12 +1,14 @@
 import React from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
 import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
+import { connect } from 'react-redux';
 
 import * as appConstants from '../constants/common';
-import ThingsToDoInLocation from '../components/ThingsToDoInLocation';
 import TabLayout from '../components/TabLayout';
 import DynamicHeightGridView from '../components/DynamicHeightGridView';
 import MapViewForThingsToDoInLocation from '../components/Home/Item/MapViewForThingsToDoInLocation';
+import * as http from '../constants/http';
+import * as actionTypes from '../redux/actionTypes';
 
 /**
  * Display Profile of an item.
@@ -36,8 +38,8 @@ class ThingsToDo extends React.Component {
    *
    * @memberof DynamicHeightGridView
    */
-  handleOnPressItem = () => {
-    this.props.navigation.navigate(appConstants.ROUTE_HOME_SINGLE_LOCATION_ITEM_PROFILE);
+  handleOnPressItem = (params) => {
+    this.props.navigation.navigate(appConstants.ROUTE_HOME_SINGLE_LOCATION_ITEM_PROFILE, params);
   }
 
   /**
@@ -62,6 +64,14 @@ class ThingsToDo extends React.Component {
     title: 'Discover',
   };
 
+  componentDidMount() {
+    http.getAllThingsToDo()
+      .then(res => {
+        this.props.addThingsToDoList(res.data);
+      })
+      .catch(err => console.warn(err));
+  }
+
   /**
    * Renders JSX element.
    *
@@ -69,6 +79,7 @@ class ThingsToDo extends React.Component {
    * @memberof ItemProfile
    */
   render() {
+    const { thingsToDo } = this.props;
     const { indexOfCurrentActiveChip } = this.state;
     const chips = appConstants.LOCATION_CHIPS.map((item, index) => {
       let touchableOpacityStyle = [styles.chipItem];
@@ -93,7 +104,10 @@ class ThingsToDo extends React.Component {
     const tabs = [
       {
         title: 'List View',
-        screen: <DynamicHeightGridView handleOnPressItem={this.handleOnPressItem} />,
+        screen: <DynamicHeightGridView
+          data={thingsToDo}
+          handleOnPressItem={this.handleOnPressItem}
+        />,
       },
       {
         title: 'Map View',
@@ -118,6 +132,18 @@ class ThingsToDo extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return state.thingsToDoReducer;
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  addThingsToDoList: (thingsToDo) => dispatch(addAllThingsToDo(thingsToDo)),
+});
+
+const addAllThingsToDo = (thingsToDo) => ({
+  type: actionTypes.ADD_THINGS_TO_DO_ALL,
+  payload: thingsToDo,
+});
 
 const styles = StyleSheet.create({
   chipContainer: {
@@ -147,4 +173,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ThingsToDo;
+export default connect(mapStateToProps, mapDispatchToProps)(ThingsToDo);

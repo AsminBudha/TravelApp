@@ -30,7 +30,7 @@ class ReviewCard extends React.Component {
         <Image
           resizeMode='cover'
           style={styles.image}
-          source={image}
+          source={{ uri: image }}
         />
         <View style={styles.details}>
           <Text>{name}</Text>

@@ -1,6 +1,10 @@
 import React from 'react';
 import { View, Text, FlatList } from 'react-native';
+import { connect } from 'react-redux';
+
 import ReviewCard from './ReviewCard';
+import * as http from '../constants/http';
+import * as actionTypes from '../redux/actionTypes';
 
 /**
  * Componenet which shows review of item in things to do.
@@ -25,7 +29,21 @@ class ThingsToDoItemReview extends React.Component {
    * @memberof ThingsToDoItemReview
    */
   _keyExtractor = (item) => {
-    return item.name;
+    return item.id.toString();
+  }
+
+  componentDidMount() {
+    const data = this.props.navigation.getParam('data', {});
+    if (!data) {
+      return;
+    }
+    const { id } = data;
+
+    http.getReviewsById(id).then((res) => {
+      this.props.addReviewsById(id, res.data);
+    }).catch(err => {
+      console.warn(err);
+    });
   }
 
   /**
@@ -35,22 +53,17 @@ class ThingsToDoItemReview extends React.Component {
    * @memberof ThingsToDoItemReview
    */
   render() {
-    let reviews = [];
-    for (let i = 0; i < 25; i++) {
-      reviews.push({
-        image: require('../assets/img/1-testimonal.jpg'),
-        name: 'Williad Scoutt' + i,
-        rating: i % 5 + 1,
-        reviewSubject: 'Awesome Experience' + i,
-        reviewText: 'It\'s such a beautiful to be in lazimpat at the evening time. Food, Place and hospitality all are good here',
-        time: '2 days ago',
-      });
-      // reviews.push(<ReviewCard />);
+    const { review } = this.props;
+    const data = this.props.navigation.getParam('data', {});
+    if (!data) {
+      return;
     }
+    const { id } = data;
+    let reviews = review[id];
 
     return (
       <View>
-        <Text>25 Reviews</Text>
+        <Text>{reviews.length} Reviews</Text>
         <FlatList
           data={reviews}
           renderItem={this._renderItem}
@@ -61,4 +74,17 @@ class ThingsToDoItemReview extends React.Component {
   }
 }
 
-export default ThingsToDoItemReview;
+const mapStateToProps = (state) => {
+  return state.reviewReducer;
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  addReviewsById: (id, reviews) => dispatch(addAllReviewsById(id, reviews)),
+});
+
+const addAllReviewsById = (id, reviews) => ({
+  type: actionTypes.ADD_ALL_REVIEW_BY_THINGS_TO_DO_ID,
+  payload: { id, data: reviews },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ThingsToDoItemReview);

@@ -8,6 +8,8 @@ import IconMaterialCommunity from 'react-native-vector-icons/MaterialCommunityIc
 import Home from '../screens/Home';
 import Profile from '../screens/Profile';
 import * as appConstants from '../constants/common';
+import Favorite from '../screens/Favorite';
+import Star from '../screens/Star';
 
 let HomeTabNavigator = {};
 
@@ -21,7 +23,7 @@ HomeTabNavigator[appConstants.ROUTE_HOME] = {
   }
 };
 HomeTabNavigator['Favourite'] = {
-  screen: Home,
+  screen: Favorite,
   navigationOptions: {
     tabBarLabel: 'Favorite',
     tabBarIcon: ({ tintColor, focused }) => (
@@ -30,7 +32,7 @@ HomeTabNavigator['Favourite'] = {
   }
 };
 HomeTabNavigator['Starred'] = {
-  screen: Home,
+  screen: Star,
   navigationOptions: {
     tabBarLabel: 'Star',
     tabBarIcon: ({ tintColor, focused }) => (

@@ -10,12 +10,12 @@ import * as appConstants from '../constants/common';
 import * as actionTypes from '../redux/actionTypes';
 
 /**
- * Display view for home tab discover.
+ * Display view for Favorite tab discover.
  *
- * @class Home
+ * @class Favorite
  * @extends {React.Component}
  */
-class Home extends React.Component {
+class Favorite extends React.Component {
 
   constructor(props) {
     super(props);
@@ -28,14 +28,14 @@ class Home extends React.Component {
   /**
    * return the key from item.
    *
-   * @memberof Home
+   * @memberof Favorite
    */
   _keyExtractor = (item) => item.id.toString();
 
   /**
    * Handles press on favourite icon to change its active state.
    *
-   * @memberof CardHome
+   * @memberof CardFavorite
    */
   handleOnPressFav = (id) => {
     this.props.toggleFavoriteLocation(id);
@@ -45,7 +45,7 @@ class Home extends React.Component {
   /**
    * return component of an item.
    *
-   * @memberof Home
+   * @memberof Favorite
    */
   _renderItem = ({ item }) => (
     <CardHome
@@ -58,34 +58,9 @@ class Home extends React.Component {
   );
 
   /**
-   * Function is called after component is rendered.
-   *
-   * @memberof Home
-   */
-  componentDidMount() {
-    const allLocation = http.getAllLocation();
-    const favoriteLocation = http.getFavoriteLocation();
-
-    Promise
-      .all([allLocation, favoriteLocation])
-      .then((res) => {
-        const data = res[0].data.map((item) => {
-          return { ...item, isFavorite: res[1].data.includes(item.id) };
-        });
-        this.props.addLocationList(data);
-        // this.setState({
-        //   data
-        // })
-      })
-      .catch((err) => {
-        console.warn(err);
-      });
-  }
-
-  /**
    * Renders JSX component.
    *
-   * @memberof Home
+   * @memberof Favorite
    */
   render() {
     const { location } = this.props;
@@ -103,7 +78,10 @@ class Home extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return state.locationReducer;
+  const { locationReducer: { location } } = state;
+  let filteredLocation = location.filter((item) => item.isFavorite)
+
+  return { location: filteredLocation };
 }
 
 const mapDispatchToProps = (dispatch) => ({
@@ -121,4 +99,4 @@ const toggleFavoriteLocation = (id) => ({
   payload: id
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Favorite);

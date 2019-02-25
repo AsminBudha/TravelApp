@@ -26,17 +26,6 @@ class CardHome extends React.Component {
   }
 
   /**
-   * Handles press on favourite icon to change its active state.
-   *
-   * @memberof CardHome
-   */
-  handleOnPressFav = () => {
-    this.setState({
-      isFavourite: !this.state.isFavourite,
-    })
-  }
-
-  /**
    * Handle press on current component view.
    * Opens profile of this item when press.
    *
@@ -54,23 +43,22 @@ class CardHome extends React.Component {
    */
   render() {
     const { data: {
-      img, numberOfThingsToDo, title
-    } } = this.props;
-    const { isFavourite } = this.state;
-    const favouriteIcon = isFavourite ? 'heart' : 'heart-o';
-    const favouriteIconColor = isFavourite ? 'red' : 'white';
+      id, img, numberOfThingsToDo, title, isFavorite
+    }, handleOnPressFav } = this.props;
+    const favouriteIcon = isFavorite ? 'heart' : 'heart-o';
+    const favouriteIconColor = isFavorite ? 'red' : 'white';
 
     return (
       <TouchableOpacity
         onPress={this.handleOnPressView}
       >
         <ImageBackground
-          source={img}
+          source={{ uri: img }}
           style={styles.card}
         >
           <TouchableOpacity
             style={styles.favourite}
-            onPress={this.handleOnPressFav}
+            onPress={() => handleOnPressFav(id)}
             hitSlop={{ top: 20, bottom: 20, left: 50, right: 50 }}
           >
             <Icon
@@ -117,10 +105,10 @@ const styles = StyleSheet.create({
   numberOfThingsToDo: {
     fontSize: 42,
     color: '#FFFF',
-    paddingRight: 10
+    paddingRight: 10,
   },
   textThingsToDo: {
-
+    justifyContent: 'center',
   },
   staticTextThingsToDo: {
     color: '#FFFF',

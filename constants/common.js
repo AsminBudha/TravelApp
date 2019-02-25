@@ -29,3 +29,9 @@ export const LOCATION_CHIP_FOOD_DRINKS_INDEX = 1;
 export const LOCATION_CHIP_SIGHT_SEEING_INDEX = 2;
 
 export const API_LOCATION_ALL = '/location';
+export const API_LOCATION_FAVORITE = '/favoriteLocation';
+export const API_LOCATION_STAR = '/starLocation';
+
+export const API_THINGS_TO_DO_ALL = '/thingsToDo';
+
+export const API_REVIEW = '/reviews';
