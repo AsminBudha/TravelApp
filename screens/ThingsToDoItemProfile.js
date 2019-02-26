@@ -1,7 +1,10 @@
 import React from 'react';
 import { View } from 'react-native';
-import TabLayout from '../components/TabLayout';
+import { connect } from 'react-redux';
 
+import * as http from '../constants/http';
+import TabLayout from '../components/TabLayout';
+import * as actionTypes from '../redux/actionTypes';
 import ThingsToDoItemInfo from '../components/ThingsToDoItemInfo';
 import ThingsToDoItemReview from '../components/ThingsToDoItemReview';
 import DynamicHeightGridView from '../components/DynamicHeightGridView';
@@ -13,6 +16,11 @@ import DynamicHeightGridView from '../components/DynamicHeightGridView';
  * @extends {React.Component}
  */
 class ThingsToDoItemProfile extends React.Component {
+  componentDidMount() {
+    http.getAllPictures()
+      .then(res => this.props.addAllPicture(res.data))
+      .catch(err => console.warn(err));
+  }
   /**
    * Renders JSX element.
    *
@@ -20,6 +28,8 @@ class ThingsToDoItemProfile extends React.Component {
    * @memberof ThingsToDoItemProfile
    */
   render() {
+    const { pictures } = this.props;
+    console.warn(pictures);
     const tabs = [
       {
         title: 'Info',
@@ -27,7 +37,7 @@ class ThingsToDoItemProfile extends React.Component {
       },
       {
         title: 'Pictures',
-        screen: <DynamicHeightGridView  {...this.props} />,
+        screen: <DynamicHeightGridView  {...this.props} data={pictures} />,
       }, {
         title: 'Reviews',
         screen: <ThingsToDoItemReview  {...this.props} />,
@@ -42,4 +52,18 @@ class ThingsToDoItemProfile extends React.Component {
   }
 }
 
-export default ThingsToDoItemProfile;
+const mapStateToProps = (state) => {
+  console.warn('hello', state);
+  return state.pictureReducer;
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  addAllPicture: (pictures) => dispatch(addAllPicture(pictures)),
+});
+
+const addAllPicture = (pictures) => ({
+  type: actionTypes.ADD_ALL_PICTURES,
+  payload: pictures,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ThingsToDoItemProfile);

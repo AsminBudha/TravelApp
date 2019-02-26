@@ -63,7 +63,7 @@ class ThingsToDoItemReview extends React.Component {
 
     return (
       <View>
-        <Text>{reviews.length} Reviews</Text>
+        <Text>{(reviews && reviews.length) || 0} Reviews</Text>
         <FlatList
           data={reviews}
           renderItem={this._renderItem}

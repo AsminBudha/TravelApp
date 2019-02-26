@@ -72,7 +72,16 @@ export const getAllThingsToDo = async () => {
  */
 export const getReviewsById = async (id) => {
   try {
-    return await instance.get(`${appConstants.API_REVIEW}?thingsToDoId${id}`);
+    return await instance.get(`${appConstants.API_REVIEW}?thingsToDoId=${id}`);
+  }
+  catch (err) {
+    return Promise.reject(err);
+  }
+}
+
+export const getAllPictures = async () => {
+  try {
+    return await instance.get(appConstants.API_PICTURE);
   }
   catch (err) {
     return Promise.reject(err);

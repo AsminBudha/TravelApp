@@ -35,3 +35,5 @@ export const API_LOCATION_STAR = '/starLocation';
 export const API_THINGS_TO_DO_ALL = '/thingsToDo';
 
 export const API_REVIEW = '/reviews';
+
+export const API_PICTURE = '/pictures';
